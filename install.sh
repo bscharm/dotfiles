@@ -94,6 +94,8 @@ cask 'iterm2'
 cask 'spotify'
 cask 'spectacle'
 cask 'flycut'
+cask 'jetbrains-toolbox'
+cask 'brave'
 
 # Languages
 brew 'go'
