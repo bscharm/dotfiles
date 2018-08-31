@@ -123,6 +123,9 @@ if ! [ -w "$HOME/.vim/bundle/Vundle.vim" ]; then
   git clone -q https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
+# Add SSH keys
+ssh-keygen -f ~/.ssh/gitub -t rsa -P ""
+
 # Various Configurations
 mkdir -p $HOME/dev
 append_to_zshrc '# added by dotfiles install script' 
