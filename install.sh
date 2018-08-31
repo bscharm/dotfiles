@@ -77,6 +77,8 @@ brew 'openssl'
 brew 'tmux'
 brew 'vim'
 brew 'zsh'
+brew 'bat'
+brew 'fzf'
 
 # GitHub
 brew 'hub'
@@ -106,6 +108,10 @@ cask 'font-fira-code'
 cask 'font-meslo-for-powerline'
 EOF
 
+# Setup fzf
+
+$(brew --prefix)/opt/fzf/install --all --no-bash
+
 # Install oh-my-zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g' | sed 's:chsh -s .*$::g')"
@@ -122,6 +128,7 @@ mkdir -p $HOME/dev
 append_to_zshrc '# added by dotfiles install script' 
 append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
 append_to_zshrc 'export GOPATH=$HOME/dev/go'
+append_to_zshrc "alias cat='bat'"
 export PATH="/usr/local/bin:$PATH"
 
 # Move dotfiles into home directory
