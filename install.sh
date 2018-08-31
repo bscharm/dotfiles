@@ -1,4 +1,4 @@
-# utility functions
+#### utility functions
 
 fancy_echo() {
   local fmt="$1"; shift
@@ -40,7 +40,7 @@ update_shell() {
 
 set -e
 
-# Set zsh as default shell
+#### Set zsh as default shell
 
 if [ ! -f "$HOME/.zshrc" ]; then
   touch "$HOME/.zshrc"
@@ -57,7 +57,7 @@ case "$SHELL" in
     ;;
 esac
 
-# Install Homebrew and go to town
+#### Install Homebrew and go to town
 
 if ! command -v brew >/dev/null; then
   fancy_echo "Installing Homebrew ..."
@@ -98,6 +98,7 @@ cask 'spectacle'
 cask 'flycut'
 cask 'jetbrains-toolbox'
 cask 'brave'
+cask 'docker'
 
 # Languages
 brew 'go'
@@ -108,25 +109,23 @@ cask 'font-fira-code'
 cask 'font-meslo-for-powerline'
 EOF
 
-# Setup fzf
+#### Setup fzf
 
 $(brew --prefix)/opt/fzf/install --all --no-bash
 
-# Install oh-my-zsh
+#### Install oh-my-zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g' | sed 's:chsh -s .*$::g')"
 
-# Set up ViM
+#### Set up ViM
 
 mkdir -p $HOME/.vim/bundle
 if ! [ -w "$HOME/.vim/bundle/Vundle.vim" ]; then
   git clone -q https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
-# Add SSH keys
-ssh-keygen -f ~/.ssh/gitub -t rsa -P ""
+#### Various Configurations
 
-# Various Configurations
 mkdir -p $HOME/dev
 append_to_zshrc '# added by dotfiles install script' 
 append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
@@ -134,6 +133,13 @@ append_to_zshrc 'export GOPATH=$HOME/dev/go'
 append_to_zshrc "alias cat='bat'"
 export PATH="/usr/local/bin:$PATH"
 
-# Move dotfiles into home directory
+#### Generate SSH keys
+
+if [ ! -f "$HOME/.ssh/github" ]; then
+  ssh-keygen -f ~/.ssh/github -t rsa -P ''
+fi
+
+#### Move dotfiles into home directory
 
 cp .vimrc "$HOME/.vimrc"
+cp .ssh.config $HOME/.ssh/config
