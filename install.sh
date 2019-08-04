@@ -67,7 +67,7 @@ fi
 
 fancy_echo "Updating Homebrew formulae ..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
-brew bundle --file=- <<EOF
+HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file=- <<EOF
 tap 'caskroom/cask' 
 tap 'caskroom/fonts'
 
@@ -79,6 +79,7 @@ brew 'vim'
 brew 'zsh'
 brew 'bat'
 brew 'fzf'
+brew 'rbenv'
 
 # GitHub
 brew 'hub'
@@ -99,9 +100,14 @@ cask 'flycut'
 cask 'jetbrains-toolbox'
 cask 'brave'
 cask 'docker'
+cask 'visual-studio-code'
+cask 'virtualbox'
+cask 'slack'
 
 # Languages
 brew 'go'
+brew 'node'
+brew 'elixir'
 cask 'java'
 
 # Fonts
@@ -131,6 +137,7 @@ append_to_zshrc '# added by dotfiles install script'
 append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
 append_to_zshrc 'export GOPATH=$HOME/dev/go'
 append_to_zshrc "alias cat='bat'"
+append_to_zshrc 'eval "$(rbenv init -)"'
 export PATH="/usr/local/bin:$PATH"
 
 #### Generate SSH keys
