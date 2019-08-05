@@ -38,9 +38,9 @@ update_shell() {
   sudo chsh -s "$shell_path" "$USER"
 }
 
-set -e
-
 #### Set zsh as default shell
+
+set -e
 
 if [ ! -f "$HOME/.zshrc" ]; then
   touch "$HOME/.zshrc"
@@ -67,6 +67,9 @@ fi
 
 fancy_echo "Updating Homebrew formulae ..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
+
+set +e
+
 HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file=- <<EOF
 tap 'caskroom/cask' 
 tap 'caskroom/fonts'
@@ -98,11 +101,12 @@ cask 'spotify'
 cask 'spectacle'
 cask 'flycut'
 cask 'jetbrains-toolbox'
-cask 'brave'
+cask 'brave-browser'
 cask 'docker'
 cask 'visual-studio-code'
 cask 'virtualbox'
 cask 'slack'
+cask 'alfred'
 
 # Languages
 brew 'go'
@@ -115,13 +119,15 @@ cask 'font-fira-code'
 cask 'font-meslo-for-powerline'
 EOF
 
+set -e
+
 #### Setup fzf
 
 $(brew --prefix)/opt/fzf/install --all --no-bash
 
 #### Install oh-my-zsh
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g' | sed 's:chsh -s .*$::g')"
+sh -c $(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g' | sed 's:chsh -s .*$::g')
 
 #### Set up ViM
 
