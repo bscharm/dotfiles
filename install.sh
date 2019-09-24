@@ -83,6 +83,7 @@ brew 'zsh'
 brew 'bat'
 brew 'fzf'
 brew 'rbenv'
+brew 'jq'
 
 # GitHub
 brew 'hub'
