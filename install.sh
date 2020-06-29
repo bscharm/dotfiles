@@ -71,8 +71,8 @@ brew update --force # https://github.com/Homebrew/brew/issues/1151
 set +e
 
 HOMEBREW_NO_AUTO_UPDATE=1 brew bundle --file=- <<EOF
-tap 'caskroom/cask' 
-tap 'caskroom/fonts'
+tap 'homebrew/cask-cask' 
+tap 'homebrew/cask-fonts'
 
 # Tools
 brew 'git'
