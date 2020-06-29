@@ -124,7 +124,7 @@ $(brew --prefix)/opt/fzf/install --all --no-bash
 
 #### Install oh-my-zsh
 
-sh -c $(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sed 's:env zsh::g' | sed 's:chsh -s .*$::g')
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 #### Set up ViM
 
