@@ -85,7 +85,7 @@ brew 'rbenv'
 brew 'jq'
 
 # GitHub
-brew 'hub'
+brew 'github/gh/gh'
 
 # Unix Tools
 brew 'coreutils'
