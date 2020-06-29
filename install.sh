@@ -141,6 +141,11 @@ append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
 append_to_zshrc 'export GOPATH=$HOME/workspace/go'
 append_to_zshrc "alias cat='bat'"
 append_to_zshrc 'eval "$(rbenv init -)"'
+append_to_zshrc 'prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}'
 export PATH="/usr/local/bin:$PATH"
 
 #### Generate SSH keys
