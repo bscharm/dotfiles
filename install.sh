@@ -96,7 +96,6 @@ brew 'postgres', restart_service: :changed
 brew 'redis', restart_service: :changed
 
 # Apps
-cask 'google-chrome'
 cask 'iterm2'
 cask 'spotify'
 cask 'spectacle'
@@ -106,7 +105,6 @@ cask 'brave-browser'
 cask 'docker'
 cask 'visual-studio-code'
 cask 'virtualbox'
-cask 'slack'
 cask 'alfred'
 
 # Languages
