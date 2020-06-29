@@ -136,10 +136,10 @@ fi
 
 #### Various Configurations
 
-mkdir -p $HOME/dev
+mkdir -p $HOME/workspace
 append_to_zshrc '# added by dotfiles install script' 
 append_to_zshrc 'export PATH="/usr/local/bin:$PATH"' 1
-append_to_zshrc 'export GOPATH=$HOME/dev/go'
+append_to_zshrc 'export GOPATH=$HOME/workspace/go'
 append_to_zshrc "alias cat='bat'"
 append_to_zshrc 'eval "$(rbenv init -)"'
 export PATH="/usr/local/bin:$PATH"
